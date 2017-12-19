@@ -5,95 +5,132 @@
 "
 
 "Vundle管理vim插件
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
-Bundle 'Tagbar'
-Bundle 'vim-scripts/c.vim'
-Bundle 'ctags.vim'
-Bundle 'cscope.vim'
-Bundle 'autoload_cscope.vim'
-Bundle 'Mark'
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-Bundle 'junegunn/vim-easy-align'        
-Bundle 'Lokaltog/vim-easymotion'        
-Bundle 'Lokaltog/vim-powerline'         
-Bundle 'vim-scripts/bufexplorer.zip'    
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'git@github.com:majutsushi/tagbar.git'
+Plugin 'git@github.com:junegunn/vim-easy-align.git'
+Plugin 'git@github.com:easymotion/vim-easymotion.git'
+Plugin 'git@github.com:vim-airline/vim-airline.git'
+Plugin 'git@github.com:vim-airline/vim-airline-themes.git'
+
+Plugin 'vim-scripts/bufexplorer.zip'
+Plugin 'ctags.vim'
+Plugin 'Mark'
+
+Plugin 'vim-scripts/restore_view.vim'                                                                                              
+set viewoptions=cursor,folds,slash,unix
 
 "sudo apt-get install silversearcher-ag
 "man ag
-Bundle 'rking/ag.vim'
-Bundle 'dyng/ctrlsf.vim'
+Plugin 'rking/ag.vim'
+Plugin 'dyng/ctrlsf.vim'
 
-Bundle 'kien/ctrlp.vim'                 
-Bundle 'tacahiroy/ctrlp-funky'
+"Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'FelikZ/ctrlp-py-matcher'
 
-Bundle 'tpope/vim-surround'             
-Bundle 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
 
-"Bundle 'Raimondi/delimitMate'           
-"Bundle 'jiangmiao/auto-pairs'
-
-Bundle 'terryma/vim-multiple-cursors'   
-
-Bundle 'myusuf3/numbers.vim'            
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'myusuf3/numbers.vim'
 let g:enable_numbers = 1
 
-Bundle 'scrooloose/nerdtree'
-Bundle 'Xuyuanp/nerdtree-git-plugin'
-Bundle 'magic-dot-files/TagHighlight'
-"autocmd BufWritePost * UpdateTypesFile                                
+"Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"Plugin 'git@github.com:junegunn/fzf.vim.git'
 
-Bundle 'vim-scripts/sessionman.vim'
-Bundle 'vim-scripts/matchit.zip'
-Bundle 'vim-scripts/restore_view.vim'
-"set viewoptions=cursor,folds,slash,unix
-set viewoptions=cursor,slash,unix
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 
-"Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'Yggdroot/indentLine'
+Plugin 'vim-scripts/matchit.zip'
+Plugin 'gregsexton/MatchTag'
+Plugin 'mbbill/undotree'
+"显示TAB缩进等级
+Plugin 'Yggdroot/indentLine'
 
-Bundle 'mhinz/vim-signify'
-Bundle 'gcmt/wildfire.vim'
-Bundle 'sjl/gundo.vim'
+Plugin 'mhinz/vim-signify'
+Plugin 'gcmt/wildfire.vim'
 
 "spf13-vim
-Bundle 'Shougo/neocomplete.vim.git'  
-"Bundle 'Shougo/neosnippet'
-"Bundle 'Shougo/neosnippet-snippets'
-"Bundle 'honza/vim-snippets'
+"Plugin 'Shougo/neosnippet'
+"Plugin 'Shougo/neosnippet-snippets'
+"Plugin 'honza/vim-snippets'
+Plugin 'git@github.com:Valloric/YouCompleteMe.git'
 
-Bundle 'fatih/vim-go'
-Bundle 'javacomplete'
+" Better Rainbow Parentheses
+Plugin 'kien/rainbow_parentheses.vim'
 
-Bundle 'rhysd/vim-clang-format'
-"
-"let g:clang_format#style_options = {
-"    \ "AccessModifierOffset" : -4,
-"    \ "AllowShortIfStatementsOnASingleLine" : "true",
-"    \ "AlwaysBreakTemplateDeclarations" : "true",
-"    \ "Standard" : "C++11"}
+" vimproc is a great asynchronous execution library for Vim
+Plugin 'Shougo/vimproc.vim', {'do' : 'make'}
 
+" This plugin provides a start screen for Vim and Neovim.
+Plugin 'mhinz/vim-startify'
 
-""""""""""""""""""""""""""""""
-" OLD
-""""""""""""""""""""""""""""""
-"Bundle 'vim-scripts/DoxygenToolkit.vim'
-""""""""""""""""""""""""""""""
+" default vim options
+Plugin 'tpope/vim-sensible'
+
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/unite-outline'
+Plugin 'chemzqm/unite-git-log'
+Plugin 'chemzqm/vim-easygit'
+
+" vim colortheme
+Plugin 'skielbasa/vim-material-monokai'
+Plugin 'emhaye/ceudah.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'gkjgh/cobalt'
+Plugin 'sickill/vim-monokai'
+Plugin 'Zabanaa/neuromancer.vim'
+Plugin 'dracula/vim'
+Plugin 'vim-scripts/PaperColor.vim'
+Plugin 'morhetz/gruvbox'
+Plugin 'rakr/vim-one'
+Plugin 'liuchengxu/space-vim-dark'
+Plugin 'szorfein/darkest-space'
+Plugin 'crater2150/vim-theme-chroma'
+Plugin 'agude/vim-eldar'
+Plugin 'Reewr/vim-monokai-phoenix'
+Plugin 'pkukulak/idle'
+
+" tools
+Plugin 'fogine/vim-syntaxattr'
+Plugin 'guns/xterm-color-table.vim'
+" Plugin 'lilydjwg/colorizer'
+
+" Switch Colorscheme
+"Plugin 'xolox/vim-misc'
+"Plugin 'xolox/vim-colorscheme-switcher'
+
+" UI
+Plugin 'ryanoasis/vim-devicons'
 
 """"""""""""""""""""""""""""""
 " NEW
 """"""""""""""""""""""""""""""
-"Bundle 'scrooloose/syntastic'
-"Bundle 'ervandew/supertab'
+" Functions and mappings to close open HTML/XML tags
+" Plugin 'docunext/closetag.vim'
+" Plugin 'mattn/emmet-vim'
+
+"Plugin 'xolox/vim-session'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
+
 "set cpt=k,b,. " cpt = 'complete' 实现就近补全功能
 "
-"filetype plugin indent on
-filetype plugin on
-
 """"""""""""""""""""""""""""""
 
 set number      "显示行号
@@ -117,29 +154,34 @@ set shiftwidth=4
 set tabstop=4
 set softtabstop=4
 set shiftround
-set tw=78
+"set tw=78
 set colorcolumn=78
 
-set fileformat=unix  
-"set fileformats=unix 
+set fileformat=unix
+"set fileformats=unix
 
 "将tab替换为空格
 nmap tt :%s/\t/ /g<CR>
 
 " 显示tab和空格
-"set list
+" set list
 " 设置tab和空格样式
-"set lcs=tab:\|\ ,nbsp:%,trail:-
+" set lcs=tab:\|\ ,nbsp:%,trail:-
 " 设定行首tab为灰色
 "highlight LeaderTab ctermfg=2
 " 匹配行首tab
 "match LeaderTab /^\t/
+"autocmd FileType c,cpp,python,xml,java,sh,html,javascript autocmd BufWrite <buffer> :%s/\s\+$//e
 
 "语法高亮
 syntax enable
 syntax on
+
+"filetype plugin indent on
+filetype plugin on
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 显示相关    
+" 显示相关
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set cul "高亮当前行
 "set cuc
@@ -147,16 +189,31 @@ set cul "高亮当前行
 set shortmess=atI   " 启动的时候不显示那个援助乌干达儿童的提示
 
 "配色表选择 /usr/share/vim/vim74/colors
-set t_Co=256
-set background=dark
-colorscheme 256-jungle
-"colorscheme yanwzh
-"solarized BlackSea ansi_blows putty greens colorful256 ansi_blows vividchalk adrian colorer darkzen elflord
+"配色表选择 /usr/local/share/vim/vim80/colors
+
+"GUI or XTerm
+set termguicolors
+
+set background=dark " for the dark version
+" set background=light " for the light version
+"colorscheme one
+"colorscheme 256-jungle
+"colorscheme PaperColor
+"colorscheme gruvbox
+"colorscheme monokai
+"colorscheme solarized
+"colorscheme material-monokai
+"colorscheme darkest-space
+"colorscheme cobalt
+"colorscheme chroma
+"colorscheme eldar
+colorscheme idle
 
 "设置vim默认编码，兼容汉字国标
 set fencs=utf-8,cp936               "设定默认解码
 set fileencodings=utf-8,gb2312,gbk,gb18030  "从磁盘读取文件的时候，通过此设置完成自动识别编码
 set termencoding=utf-8              "用于屏幕显示的编码方式
+set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete\ 12
 set encoding=utf-8              "vim内部使用的字符编码方式 --通常为utf-8 修改为prc是为解决中文乱码
 
 
@@ -168,16 +225,18 @@ if isdirectory(expand("~/.vim/bundle/ag.vim/"))
     "let g:ag_working_path_mode="r"
     let g:ag_prg = 'ag -S --nocolor --nogroup --column --ignore sitedata --ignore image --ignore "tags" --ignore "cscope.out" --ignore "*~" --ignore-dir "output"'
     nmap <leader>ag :Ag! <C-R><C-W><CR>
-    nmap <S-F12> :Ag! <C-R><C-W><CR>
+    nmap <C-u> :Ag!
+    nmap <leader>as :Ag!
 endif
 
 """"""""""""""""""""""""""""""
 " Ctrlsf
 """"""""""""""""""""""""""""""
 if isdirectory(expand("~/.vim/bundle/ctrlsf.vim/"))
-    let g:ctrlsf_position = 'left'
-    let g:ctrlsf_winsize = '60%'
+    let g:ctrlsf_position = 'top'
+    let g:ctrlsf_winsize = '40%'
     let g:ctrlsf_context = '-B 3 -A 5'
+    let g:ctrlsf_auto_close = 0
     let g:ctrlsf_extra_backend_args = {
         \ 'ag': '-S --nogroup --ignore sitedata --ignore "tags" --ignore "cscope.out" --ignore "*~" --ignore-dir "output"'
         \ }
@@ -185,7 +244,108 @@ if isdirectory(expand("~/.vim/bundle/ctrlsf.vim/"))
         \ "next": "n",
         \ "prev": "N",
         \ }
-    nmap <leader>aa :CtrlSF <C-R><C-W><CR>
+    nmap <leader><leader>a :CtrlSF <C-R><C-W><CR>
+endif
+
+
+""""""""""""""""""""""""""""""
+" vim-startify
+""""""""""""""""""""""""""""""
+if isdirectory(expand("~/.vim/bundle/vim-startify/"))
+
+    let g:startify_enable_special         = 1
+    let g:startify_files_number           = 15
+    let g:startify_relative_path          = 1
+    let g:startify_change_to_dir          = 0
+    let g:startify_update_oldfiles        = 1
+    let g:startify_session_autoload       = 0
+    let g:startify_session_persistence    = 1
+    let g:startify_session_delete_buffers = 1
+
+    let g:startify_skiplist = [
+                \ 'COMMIT_EDITMSG',
+                \ 'bundle/.*/doc',
+                \ '/data/repo/neovim/runtime/doc',
+                \ '/Users/mhi/local/vim/share/vim/vim74/doc',
+                \ ]
+
+    let g:startify_bookmarks = [
+                \ { 'c': '~/.vim/vimrc' },
+                \ '~/golfing',
+                \ ]
+
+    let g:startify_session_dir = '~/.vim/sessions'
+
+    let g:startify_custom_footer =
+          \ ['', "   Vim is charityware. Please read ':help uganda'.", '']
+
+    let g:startify_list_order = [
+            \ ['   My most recently used files'],
+            \ 'files',
+            \ ['   My most recently used files in the current directory:'],
+            \ 'dir',
+            \ ['   These are my sessions:'],
+            \ 'sessions',
+            \ ['   These are my bookmarks:'],
+            \ 'bookmarks',
+            \ ['   These are my commands:'],
+            \ 'commands',
+            \ ]
+
+    hi StartifyBracket ctermfg=240
+    hi StartifyFile    ctermfg=147
+    hi StartifyFooter  ctermfg=240
+    hi StartifyHeader  ctermfg=114
+    hi StartifyNumber  ctermfg=215
+    hi StartifyPath    ctermfg=245
+    hi StartifySlash   ctermfg=240
+    hi StartifySpecial ctermfg=240
+endif
+
+
+""""""""""""""""""""""""""""""
+" YCM
+""""""""""""""""""""""""""""""
+if isdirectory(expand("~/.vim/bundle/YouCompleteMe/"))
+    set completeopt-=preview
+    "设置全局配置文件的路径
+    let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+    ""开启基于tag的补全，可以在这之后添加需要的标签路径
+    "let g:ycm_collect_identifiers_from_tags_files = 0
+    "开启语义补全
+    let g:ycm_seed_identifiers_with_syntax = 1
+    "不显示开启vim时检查ycm_extra_conf文件的信息
+    let g:ycm_confirm_extra_conf = 0
+    ""每次重新生成匹配项，禁止缓存匹配项
+    "let g:ycm_cache_omnifunc = 0
+    ""在注释中也可以补全
+    "let g:ycm_complete_in_comments = 1
+    " 设置Python解释器的路径
+    let g:ycm_server_python_interpreter = '/usr/bin/python3.5'
+    ""输入第一个字符就开始补全
+    "let g:ycm_min_num_of_chars_for_completion = 1
+    ""不查询ultisnips提供的代码模板补全，如果需要，设置成1即可
+    "let g:ycm_use_ultisnips_completer = 0
+    "let g:ycm_filetype_blacklist = {
+        "\ 'tagbar' : 1,
+        "\ 'nerdtree' : 1,
+        "\}
+
+    let g:ycm_show_diagnostics_ui =
+        \ get( g:, 'ycm_show_diagnostics_ui',
+        \ get( g:, 'ycm_register_as_syntastic_checker', 0 ) )
+
+    ""if exists(expand("../.ycm_extra_conf.py"))
+    ""    let g:ycm_auto_trigger = 1
+    ""else
+    ""    let g:ycm_auto_trigger = 0
+    ""endif
+    ""
+    "nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+    "nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+    "nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+    "nmap <F10> :YcmDiags<CR>
+
 endif
 
 
@@ -199,96 +359,26 @@ if isdirectory(expand("~/.vim/bundle/wildfire.vim/"))
             \ }
 endif
 
-"""""""""""""""""""""""""""""""
-"" NEOCOMPLETE
-"""""""""""""""""""""""""""""""
-" Disable AutoComplPop.
-set completeopt-=preview
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-
-let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 """"""""""""""""""""""""""""""
 " CRTL-P
+" Press <c-f> and <c-b> to cycle between modes.
+" Press <c-d> to switch to filename only search instead of full path.
+" Press <c-r> to switch to regexp mode.
 """"""""""""""""""""""""""""""
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-
 " ctrlp {
     if isdirectory(expand("~/.vim/bundle/ctrlp.vim/"))
-        let g:ctrlp_working_path_mode = 'ra'
+        let g:ctrlp_map = '<c-p>'
+        let g:ctrlp_cmd = 'CtrlP'
+
+        let g:ctrlp_working_path_mode = 'a'
         nnoremap <silent> <D-t> :CtrlP<CR>
         nnoremap <silent> <D-r> :CtrlPMRU<CR>
+
         let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\.git$\|\.hg$\|\.svn$',
-            \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$' }
+            \ 'dir':  '\v[\/]\.(git|hg|svn|rvm)$',
+            \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz|pyc|o)$',
+            \ }
 
         if executable('ag')
             let s:ctrlp_fallback = 'ag %s --nocolor -l -g ""'
@@ -317,13 +407,58 @@ let g:ctrlp_cmd = 'CtrlP'
             " CtrlP extensions
             let g:ctrlp_extensions = ['funky']
             let g:ctrlp_funky_matchtype = 'path'
-            let g:ctrlp_funky_syntax_highlight = 1 
+            let g:ctrlp_funky_syntax_highlight = 1
 
             "funky
-            nnoremap <Leader>fu :CtrlPFunky<Cr>
+            nnoremap <C-l> :CtrlPFunky<Cr>
         endif
+
+        if isdirectory(expand("~/.vim/bundle/ctrlp-py-matcher/"))
+            let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+        endif
+
     endif
 "}
+
+
+""""""""""""""""""""""""""""""
+" UNITE
+""""""""""""""""""""""""""""""
+if isdirectory(expand("~/.vim/bundle/unite.vim/"))
+    let g:unite_source_history_yank_enable = 1
+    call unite#filters#matcher_default#use(['matcher_fuzzy'])
+
+    nnoremap <leader><leader>z :Unite -start-insert -vertical -winwidth=60 -sync file<cr>
+    "nnoremap <leader><leader>x :Unite -start-insert -winheight=15 file_rec/async<cr>
+    nnoremap <leader><leader>c :<C-u>Unite -vertical -winwidth=60 -buffer-name=files -start-insert file_rec/async:!<cr>
+    "nnoremap <leader><leader>x :Unite -no-empty -vertical -winwidth=60 grep:.<CR>
+
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts =
+                \ '-i --vimgrep --hidden --nogroup --column --ignore ' .
+                \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'' --ignore ''output'' --ignore ''cscope.*'' --ignore ''deps'' --ignore ''tags'''
+    let g:unite_source_grep_recursive_opt = ''
+
+    nnoremap <silent> <space>s :Unite -quick-match -winheight=10 buffer<cr><CR>
+
+    nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   -start-insert file_rec/async:!<cr>
+    nnoremap <leader>f :<C-u>Unite -no-split -buffer-name=files   -start-insert file<cr>
+    nnoremap <leader>r :<C-u>Unite -no-split -buffer-name=mru     -start-insert file_mru<cr>
+    nnoremap <leader>o :<C-u>Unite -no-split -buffer-name=outline -start-insert outline<cr>
+    nnoremap <leader>y :<C-u>Unite -no-split -buffer-name=yank    history/yank<cr>
+    nnoremap <leader>e :<C-u>Unite -no-split -buffer-name=buffer  buffer<cr>
+
+    " Custom mappings for the unite buffer
+    autocmd FileType unite call s:unite_settings()
+    function! s:unite_settings()
+        " Play nice with supertab
+        let b:SuperTabDisabled=1
+        " Enable navigation with control-j and control-k in insert mode
+        imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+        imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+    endfunction
+
+endif
 
 """"""""""""""""""""""""""""""
 " GUNDO
@@ -335,6 +470,15 @@ if isdirectory(expand("~/.vim/bundle/gundo.vim/"))
         set undofile
     catch
     endtry
+endif
+
+""""""""""""""""""""""""""""""
+" UNDOTREE
+""""""""""""""""""""""""""""""
+if isdirectory(expand("~/.vim/bundle/undotree/"))
+    nnoremap <S-F5> :UndotreeToggle<cr>
+    set undodir=~/.vim/undodir
+    set undofile
 endif
 
 
@@ -360,25 +504,15 @@ if isdirectory(expand("~/.vim/bundle/vim-indent-guides/"))
 endif
 
 if isdirectory(expand("~/.vim/bundle/indentLine/"))
+    map <leader><leader>d :IndentLinesToggle<CR>
+    let g:indentLine_enabled = 0
     let g:indentLine_char = "┊"
     let g:indentLine_color_term = 239
     let g:indentLine_showFirstIndentLevel = 0
     "add by myself
-    let g:indentLine_startFirstIndentLevel = 3
+    let g:indentLine_startFirstIndentLevel = 2
     let g:indentLine_indentLevel = 9
 endif
-
-""""""""""""""""""""""""""""""
-" SESSIONMAN
-""""""""""""""""""""""""""""""
-" Session List {
-    if isdirectory(expand("~/.vim/bundle/sessionman.vim/"))
-        set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
-        nmap <leader>ml :SessionList<CR>
-        nmap <leader>ms :SessionSave<CR>
-        nmap <leader>mc :SessionClose<CR>
-    endif
-" }
 
 
 """"""""""""""""""""""""""""""
@@ -396,7 +530,7 @@ let g:multi_cursor_quit_key='<Esc>'
 " NERDTree
 """"""""""""""""""""""""""""""
 if isdirectory(expand("~/.vim/bundle/nerdtree"))
-    nmap <S-F7> :NERDTreeToggle<CR>
+    "nmap <S-F7> :NERDTreeToggle<CR>
     let g:NERDTreeWinPos="right"
     let g:NERDTreeWinSize=35
     let g:NERDTreeShowLineNumbers=1
@@ -407,6 +541,10 @@ if isdirectory(expand("~/.vim/bundle/nerdtree"))
     let NERDTreeMouseMode=2
     let NERDTreeShowHidden=1
     let NERDTreeKeepTreeInNewTab=1
+    "let loaded_nerd_tree=1
+
+    nmap <S-F7> :NERDTreeToggle<CR>
+
 endif
 
 """"""""""""""""""""""""""""""
@@ -464,10 +602,10 @@ let g:tagbar_type_go = {
 " BUFEXPLORER SETTING
 """"""""""""""""""""""""""""""
 "noremap \\ :BufExplorer<CR>
-noremap <silent> <F10> :BufExplorer<CR>
-let g:bufExplorerDefaultHelp=0 " Do not show default help. 
-let g:bufExplorerShowRelativePath=1 " Show relative paths. 
-let g:bufExplorerSortBy='mru' " Sort by most recently used. 
+noremap <silent> <leader>' :BufExplorer<CR>
+let g:bufExplorerDefaultHelp=0 " Do not show default help.
+let g:bufExplorerShowRelativePath=1 " Show relative paths.
+let g:bufExplorerSortBy='mru' " Sort by most recently used.
 
 
 """"""""""""""""""""""""""""""
@@ -489,6 +627,38 @@ vmap <SPACE> <Plug>(EasyAlign)
 
 
 """"""""""""""""""""""""""""""
+" RAINBOW PARENTHESES
+""""""""""""""""""""""""""""""
+if isdirectory(expand("~/.vim/bundle/rainbow_parentheses.vim/"))
+    let g:rbpt_colorpairs = [
+        \ ['brown',       'RoyalBlue3'],
+        \ ['Darkblue',    'SeaGreen3'],
+        \ ['darkgray',    'DarkOrchid3'],
+        \ ['darkgreen',   'firebrick3'],
+        \ ['darkcyan',    'RoyalBlue3'],
+        \ ['darkred',     'SeaGreen3'],
+        \ ['darkmagenta', 'DarkOrchid3'],
+        \ ['brown',       'firebrick3'],
+        \ ['gray',        'RoyalBlue3'],
+        \ ['darkcyan',    'SeaGreen3'],
+        \ ['darkmagenta', 'DarkOrchid3'],
+        \ ['Darkblue',    'firebrick3'],
+        \ ['darkgreen',   'RoyalBlue3'],
+        \ ['darkcyan',    'SeaGreen3'],
+        \ ['darkred',     'DarkOrchid3'],
+        \ ['red',         'firebrick3'],
+        \ ]
+
+    let g:rbpt_max = 16
+    let g:rbpt_loadcmd_toggle = 0
+
+    au VimEnter * RainbowParenthesesToggle      "Toggle it on/off
+    au Syntax * RainbowParenthesesLoadRound     "(), the default when toggling
+    au Syntax * RainbowParenthesesLoadSquare    "[]
+    au Syntax * RainbowParenthesesLoadBraces    "{}
+endif
+
+""""""""""""""""""""""""""""""
 " EASYMOTION
 """"""""""""""""""""""""""""""
 "let g:EasyMotion_mapping_f = '_f'
@@ -507,8 +677,8 @@ vmap <SPACE> <Plug>(EasyAlign)
 " QUICKFIX
 """"""""""""""""""""""""""""""
 "quickfix按键映射表
-nmap <F8> :cn<cr>                   
-nmap <F7> :cp<cr>               
+nmap <F8> :cn<cr>
+nmap <F7> :cp<cr>
 
 "nmap <leader>co :QFix<CR>
 "nmap <leader>ct :call QFixToggle(1)<CR>
@@ -535,12 +705,50 @@ augroup END
 
 
 """"""""""""""""""""""""""""""
-" POWERLINE
+" AIRLINE
 """"""""""""""""""""""""""""""
-""总是显示状态栏
-set laststatus=2
-let g:Powerline_symbols = 'unicode'
-"let g:Powerline_symbols = 'compatible'
+if isdirectory(expand("~/.vim/bundle/vim-airline/"))
+
+    if !exists('g:airline_symbols')
+        let g:airline_symbols = {}
+    endif
+
+    let g:airline_powerline_fonts = 1
+
+    "let g:airline_theme='dark'
+    "let g:airline_theme='simple'
+    let g:airline_theme='papercolor'
+    "let g:airline_theme='solarized'
+    "let g:airline_theme='murmur'
+    "let g:airline_theme='kalisi'
+
+    let g:airline_section_b = airline#section#create(['file', 'readonly'])
+    "let g:airline_section_error = airline#section#create(['filetype'])
+
+    let g:airline#extensions#default#layout = [
+                \ [ 'a', 'b', 'x' ],
+                \ [ 'y', 'z']
+                \ ]
+    let g:airline#extensions#tagbar#flags = 'f'
+
+    "设置切换Buffer快捷键"
+    let g:airline#extensions#tabline#enabled = 0
+    let g:airline#extensions#tabline#buffer_idx_mode = 1
+    let g:airline#extensions#tabline#fnamemod = ':t'
+
+    nmap <leader>1 <Plug>AirlineSelectTab1
+    nmap <leader>2 <Plug>AirlineSelectTab2
+    nmap <leader>3 <Plug>AirlineSelectTab3
+    nmap <leader>4 <Plug>AirlineSelectTab4
+    nmap <leader>5 <Plug>AirlineSelectTab5
+    nmap <leader>6 <Plug>AirlineSelectTab6
+    nmap <leader>7 <Plug>AirlineSelectTab7
+    nmap <leader>8 <Plug>AirlineSelectTab8
+    nmap <leader>9 <Plug>AirlineSelectTab9
+    nmap <leader>- <Plug>AirlineSelectPrevTab
+    nmap <leader>+ <Plug>AirlineSelectNextTab
+
+endif
 
 """"""""""""""""""""""""""""""
 " Surround Command
@@ -567,122 +775,6 @@ let g:Powerline_symbols = 'unicode'
 "    <CTRL-g>s - same as <CTRL-s>
 "    <CTRL-g>S - same as <CTRL-s><CTRL-s>
 
-
-""""""""""""""""""""""""""""""
-" FUZZYFINDER
-""""""""""""""""""""""""""""""
-"FuzzyFinder配置
-let g:fuf_modesDisable = []
-let g:fuf_mrufile_maxItem = 400
-let g:fuf_mrucmd_maxItem = 400
-nnoremap <silent> sj     :FufBuffer<CR>
-nnoremap <silent> sk     :FufFileWithCurrentBufferDir<CR>
-nnoremap <silent> sK     :FufFileWithFullCwd<CR>
-nnoremap <silent> s<C-k> :FufFile<CR>
-nnoremap <silent> sl     :FufCoverageFile<CR>
-nnoremap <silent> sL     :FufCoverageFileChange<CR>
-nnoremap <silent> s<C-l> :FufCoverageFileRegister<CR>
-nnoremap <silent> sd     :FufDirWithCurrentBufferDir<CR>
-nnoremap <silent> sD     :FufDirWithFullCwd<CR>
-nnoremap <silent> s<C-d> :FufDir<CR>
-nnoremap <silent> sn     :FufMruFile<CR>
-nnoremap <silent> sN     :FufMruFileInCwd<CR>
-nnoremap <silent> sm     :FufMruCmd<CR>
-nnoremap <silent> su     :FufBookmarkFile<CR>
-nnoremap <silent> s<C-u> :FufBookmarkFileAdd<CR>
-vnoremap <silent> s<C-u> :FufBookmarkFileAddAsSelectedText<CR>
-nnoremap <silent> si     :FufBookmarkDir<CR>
-nnoremap <silent> s<C-i> :FufBookmarkDirAdd<CR>
-nnoremap <silent> st     :FufTag<CR>
-nnoremap <silent> sT     :FufTag!<CR>
-nnoremap <silent> s<C-]> :FufTagWithCursorWord!<CR>
-nnoremap <silent> s,     :FufBufferTag<CR>
-nnoremap <silent> s<     :FufBufferTag!<CR>
-vnoremap <silent> s,     :FufBufferTagWithSelectedText!<CR>
-vnoremap <silent> s<     :FufBufferTagWithSelectedText<CR>
-nnoremap <silent> s}     :FufBufferTagWithCursorWord!<CR>
-nnoremap <silent> s.     :FufBufferTagAll<CR>
-nnoremap <silent> s>     :FufBufferTagAll!<CR>
-vnoremap <silent> s.     :FufBufferTagAllWithSelectedText!<CR>
-vnoremap <silent> s>     :FufBufferTagAllWithSelectedText<CR>
-nnoremap <silent> s]     :FufBufferTagAllWithCursorWord!<CR>
-nnoremap <silent> sg     :FufTaggedFile<CR>
-nnoremap <silent> sG     :FufTaggedFile!<CR>
-nnoremap <silent> so     :FufJumpList<CR>
-nnoremap <silent> sp     :FufChangeList<CR>
-nnoremap <silent> sq     :FufQuickfix<CR>
-nnoremap <silent> sy     :FufLine<CR>
-nnoremap <silent> sh     :FufHelp<CR>
-nnoremap <silent> se     :FufEditDataFile<CR>
-nnoremap <silent> sr     :FufRenewCache<CR>
-"
-" F4和shift+F4调用FuzzyFinder命令行菜单""{{{
-"
-function! GetAllCommands()
-  redir => commands
-  silent command
-  redir END
-  return map((split(commands, "\n")[3:]),
-      \      '":" . matchstr(v:val, ''^....\zs\S*'')')
-endfunction
-
-" 自定义命令行
-let g:fuf_com_list=[':exe "FufBuffer                       " |" sj     ',
-                   \':exe "FufFileWithCurrentBufferDir     " |" sk     ',
-                   \':exe "FufFileWithFullCwd              " |" sK     ',
-                   \':exe "FufFile                         " |" s<C-k> ',
-                   \':exe "FufCoverageFile                 " |" sl     ',
-                   \':exe "FufCoverageFileChange           " |" sL     ',
-                   \':exe "FufCoverageFileRegister         " |" s<C-l> ',
-                   \':exe "FufDirWithCurrentBufferDir      " |" sd     ',
-                   \':exe "FufDirWithFullCwd               " |" sD     ',
-                   \':exe "FufDir                          " |" s<C-d> ',
-                   \':exe "FufMruFile                      " |" sn     ',
-                   \':exe "FufMruFileInCwd                 " |" sN     ',
-                   \':exe "FufMruCmd                       " |" sm     ',
-                   \':exe "FufBookmarkFile                 " |" su     ',
-                   \':exe "FufBookmarkFileAdd              " |" s<C-u> ',
-                   \':exe "FufBookmarkFileAddAsSelectedText" |" s<C-u> ',
-                   \':exe "FufBookmarkDir                  " |" si     ',
-                   \':exe "FufBookmarkDirAdd               " |" s<C-i> ',
-                   \':exe "FufTag                          " |" st     ',
-                   \':exe "FufTag!                         " |" sT     ',
-                   \':exe "FufTagWithCursorWord!           " |" s<C-]> ',
-                   \':exe "FufBufferTag                    " |" s,     ',
-                   \':exe "FufBufferTag!                   " |" s<     ',
-                   \':exe "FufBufferTagWithSelectedText!   " |" s,     ',
-                   \':exe "FufBufferTagWithSelectedText    " |" s<     ',
-                   \':exe "FufBufferTagWithCursorWord!     " |" s}     ',
-                   \':exe "FufBufferTagAll                 " |" s.     ',
-                   \':exe "FufBufferTagAll!                " |" s>     ',
-                   \':exe "FufBufferTagAllWithSelectedText!" |" s.     ',
-                   \':exe "FufBufferTagAllWithSelectedText " |" s>     ',
-                   \':exe "FufBufferTagAllWithCursorWord!  " |" s]     ',
-                   \':exe "FufTaggedFile                   " |" sg     ',
-                   \':exe "FufTaggedFile!                  " |" sG     ',
-                   \':exe "FufJumpList                     " |" so     ',
-                   \':exe "FufChangeList                   " |" sp     ',
-                   \':exe "FufQuickfix                     " |" sq     ',
-                   \':exe "FufLine                         " |" sy     ',
-                   \':exe "FufHelp                         " |" sh     ',
-                   \':exe "FufEditDataFile                 " |" se     ',
-                   \':exe "FufRenewCache                   " |" sr     ',
-                   \':exe "FufDir ~/"                        |" 更换目录从家目录jml',
-                   \':exe "FufFile ~/"                       |" 打开文件从家目录jml',
-                   \]
-
-
-nnoremap <silent> <S-F11> :call fuf#givencmd#launch('', 0, '选择命令>', GetAllCommands())<CR>
-nnoremap <silent> <F11> :call fuf#givencmd#launch('', 0, '选择命令>', g:fuf_com_list)<CR>
-
-""""""""""""""""""""""""""""""
-" Autoload_Cscope 添加cscope位置
-""""""""""""""""""""""""""""""
-"cscope add cscope.out ./
-"cscope add /home/yanwzh/workspace/drivers/v1.9/gxbus/cscope.out /home/yanwzh/workspace/drivers/v1.9/gxbus
-"Audo add cscope by autoloadcscope
-let g:autocscope_menus=0 "关闭autocscope插件的快捷健映射.防止和我们定义的快捷键冲突.
-
 """"""""""""""""""""""""""""""
 " CSCOPE
 """"""""""""""""""""""""""""""
@@ -692,17 +784,30 @@ nmap <F5> :cs find c <C-R>=expand("<cword>")<CR><CR>
 nmap <F6> :cs find t <C-R>=expand("<cword>")<CR><CR>
 "nmap <F3> :!ctags -R --c-kinds=+lx --fields=+laS --extra=+q  $PWD /home/yanwzh/workspace/drivers/v1.9/gxbus <CR><CR>:!cscope -Rbkq<CR>
 "nmap <F3><F3> :!ctags -R --c++-kinds=+plx --fields=+iaS --extra=+q . /home/yanwzh/workspace/drivers/v1.9/gxbus <CR><CR>:!cscope -Rbkq<CR>
-nmap <F3> :!ctags -R --c-kinds=+lx --fields=+laS --extra=+q  $PWD <CR><CR>:!cscope -Rbkq<CR>
+nmap <F3> :!ctags -R --c-kinds=+cdefgmnpstulvx --fields=+laSzm --extra=+q  $PWD <CR><CR>:!cscope -Rbkq<CR>
 nmap <F3><F3> :!ctags -R --c++-kinds=+plx --fields=+iaS --extra=+q $PWD <CR><CR>:!cscope -Rbkq<CR>
-
 
 "添加tags位置
 "set autochdir "自动切换目录，会导致FuzzyFinder失败 如果打开使用sk代替sl搜索文件 同时ctags生成时需要使用绝对路径
 set tags=tags; "自动查找 这个分号是不能省略
-"Sample
+
+set tags+=../driver/gxbus/tags
+set tags+=../driver/gxcoreapi/tags
+set tags+=../driver/gxavdev/tags
+set tags+=../driver/demod/tags
+set tags+=../driver/gxcas/tags
+set tags+=../driver/thirdparty/tags
+
+set tags+=../platform/gxbus/tags
+set tags+=../platform/gxcoreapi/tags
+set tags+=../platform/gxavdev/tags
+set tags+=../platform/demod/tags
+set tags+=../platform/gxcas/tags
+set tags+=../platform/thirdparty/tags
+
 "set tags+=/home/yanwzh/workspace/goxceed/git-driver/v1.9-Beta3-2013-02-26/demod/tags
 "ctags -R /home/boddy/hello/ ctags /usr/include/* /usr/include/bits/*
-" 
+"
 "
 "
 "映射F12为更新tags cscope快捷按键
@@ -801,16 +906,64 @@ nmap <leader><leader>q :call CodeFormat()<CR>
 "map <F2> :call TitleInsert()<CR>ggjjA
 "autocmd FileWritePre,BufWritePre *.c ks|call DateInsert()|'s
 
+"function! KRIndent()
+"    let c_space_errors = 0
+"    set fileformats=unix
+"    set textwidth=120
+"    set noexpandtab
+"    set shiftround
+"    set cindent
+"    set formatoptions=tcqlron
+"    set cinoptions=:0,l1,t0,g0
+"    syntax keyword cType u8 u16 u32 u64 s8 s16 s32 s64 off64_t
+"    highlight default link LinuxError ErrorMsg
+"
+"    syntax match LinuxError / \+\ze\t/     " spaces before tab
+"    syntax match LinuxError /\s\+$/        " trailing whitespaces
+"    "syntax match LinuxError /\%121v.\+/    " virtual column 121 and more
+"    "autocmd BufWrite <buffer> :%s/\s\+$//e " 文件保存时，自动删除行尾空格
+"endfunction
+"if has("autocmd")
+"    autocmd FileType c,cpp,h,hh call KRIndent()
+"endif
+"
 
+" LINE
+"function! Buf_total_num()
+"    return len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
+"endfunction
+"function! File_size(f)
+"    let l:size = getfsize(expand(a:f))
+"    if l:size == 0 || l:size == -1 || l:size == -2
+"        return ''
+"    endif
+"    if l:size < 1024
+"        return l:size.' bytes'
+"    elseif l:size < 1024*1024
+"        return printf('%.1f', l:size/1024.0).'k'
+"    elseif l:size < 1024*1024*1024
+"        return printf('%.1f', l:size/1024.0/1024.0) . 'm'
+"    else
+"        return printf('%.1f', l:size/1024.0/1024.0/1024.0) . 'g'
+"    endif
+"endfunction
+"set statusline=%<%1*[B-%n]%*
+"" TOT is an abbreviation for total
+"set statusline+=%2*[TOT:%{Buf_total_num()}]%*
+"set statusline+=%3*\ %{File_size(@%)}\ %*
+"set statusline+=%4*\ %F\ %*
+"set statusline+=%5*『\ %{exists('g:loaded_ale')?ALEGetStatusLine():''}』%{exists('g:loaded_fugitive')?fugitive#statusline():''}%*
+"set statusline+=%6*\ %m%r%y\ %*
+"set statusline+=%=%7*\ %{&ff}\ \|\ %{\"\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"\ \|\"}\ %-14.(%l:%c%V%)%*
+"set statusline+=%8*\ %P\ %*
+"" default bg for statusline is 236 in space-vim-dark
+"hi User1 cterm=bold ctermfg=232 ctermbg=179
+"hi User2 cterm=None ctermfg=214 ctermbg=242
+"hi User3 cterm=None ctermfg=251 ctermbg=240
+"hi User4 cterm=bold ctermfg=169 ctermbg=239
+"hi User5 cterm=None ctermfg=208 ctermbg=238
+"hi User6 cterm=None ctermfg=246 ctermbg=237
+"hi User7 cterm=None ctermfg=250 ctermbg=238
+"hi User8 cterm=None ctermfg=249 ctermbg=240
 
-""""""""""""""""""""""""""""""
-" JAVACOMPLETE
-""""""""""""""""""""""""""""""
-setlocal omnifunc=javacomplete#Complete
-silent autocmd Filetype java set omnifunc=javacomplete#Complete
-silent autocmd Filetype java set completefunc=javacomplete#CompleteParamsInf
-"inoremap <buffer> <C-X><C-U> <C-X><C-U><C-P> 
-"inoremap <buffer> <C-S-Space> <C-X><C-U><C-P>
-silent autocmd Filetype java,javascript,jsp inoremap <buffer>  .  .<C-X><C-O><C-P>
-"autocmd FileType java inoremap <buffer> . .<C-X><C-O><C-P><Down>
 
