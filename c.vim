@@ -415,6 +415,10 @@ else
   exec "syn sync ccomment cComment minlines=" . b:c_minlines
 endif
 
+"highlight Functions
+syn match cFuntions display "[a-zA-Z_]\{-1,}\s\{-0,}(\{1}"ms=s,me=e-1
+hi def link cFuntions Function
+
 " Define the default highlighting.
 " Only used when an item doesn't have highlighting yet
 hi def link cFormat		cSpecial
