@@ -56,17 +56,40 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'vim-scripts/matchit.zip'
 Plugin 'gregsexton/MatchTag'
 Plugin 'mbbill/undotree'
+
 "显示TAB缩进等级
 Plugin 'Yggdroot/indentLine'
 
 Plugin 'mhinz/vim-signify'
 Plugin 'gcmt/wildfire.vim'
 
+
+" vim
 "spf13-vim
+
+" complete
 "Plugin 'Shougo/neosnippet'
 "Plugin 'Shougo/neosnippet-snippets'
 "Plugin 'honza/vim-snippets'
-Plugin 'git@github.com:Valloric/YouCompleteMe.git'
+"Plugin 'Valloric/YouCompleteMe'
+	
+"Plugin 'marijnh/tern_for_vim'
+" Javascript
+Plugin 'roxma/nvim-cm-tern'
+" C/C++
+Plugin 'roxma/ncm-clang'
+Plugin 'roxma/nvim-completion-manager'
+Plugin 'roxma/vim-hug-neovim-rpc'
+
+"Plugin 'Shougo/deoplete.nvim'
+"Plugin 'roxma/nvim-yarp'
+"Plugin 'roxma/vim-hug-neovim-rpc'
+"Plugin 'zchee/deoplete-clang'
+
+"tags
+"Plugin 'DfrankUtil'                                             
+"Plugin 'vimprj'                                                 
+"Plugin 'indexer.tar.gz'
 
 " Better Rainbow Parentheses
 Plugin 'kien/rainbow_parentheses.vim'
@@ -113,7 +136,10 @@ Plugin 'guns/xterm-color-table.vim'
 "Plugin 'xolox/vim-colorscheme-switcher'
 
 " UI
-Plugin 'ryanoasis/vim-devicons'
+"Plugin 'ryanoasis/vim-devicons'
+
+" Lint
+"Plugin 'w0rp/ale'
 
 """"""""""""""""""""""""""""""
 " NEW
@@ -126,7 +152,6 @@ Plugin 'ryanoasis/vim-devicons'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
-
 
 
 "set cpt=k,b,. " cpt = 'complete' 实现就近补全功能
@@ -309,31 +334,41 @@ endif
 if isdirectory(expand("~/.vim/bundle/YouCompleteMe/"))
     set completeopt-=preview
     "设置全局配置文件的路径
-    let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+    "let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
     ""开启基于tag的补全，可以在这之后添加需要的标签路径
-    "let g:ycm_collect_identifiers_from_tags_files = 0
+    let g:ycm_collect_identifiers_from_tags_files = 1
     "开启语义补全
     let g:ycm_seed_identifiers_with_syntax = 1
     "不显示开启vim时检查ycm_extra_conf文件的信息
     let g:ycm_confirm_extra_conf = 0
     ""每次重新生成匹配项，禁止缓存匹配项
-    "let g:ycm_cache_omnifunc = 0
+    let g:ycm_cache_omnifunc = 0
     ""在注释中也可以补全
-    "let g:ycm_complete_in_comments = 1
+    let g:ycm_complete_in_comments = 0
     " 设置Python解释器的路径
-    let g:ycm_server_python_interpreter = '/usr/bin/python3.5'
+    let g:ycm_server_python_interpreter = '/usr/bin/python'
     ""输入第一个字符就开始补全
-    "let g:ycm_min_num_of_chars_for_completion = 1
+    let g:ycm_min_num_of_chars_for_completion = 1
     ""不查询ultisnips提供的代码模板补全，如果需要，设置成1即可
-    "let g:ycm_use_ultisnips_completer = 0
-    "let g:ycm_filetype_blacklist = {
-        "\ 'tagbar' : 1,
-        "\ 'nerdtree' : 1,
-        "\}
+    let g:ycm_use_ultisnips_completer = 0
+    let g:ycm_filetype_blacklist = {
+        \ 'tagbar' : 1,
+        \ 'nerdtree' : 1,
+        \ 'qf' : 1,
+        \ 'notes' : 1,
+        \ 'markdown' : 1,
+        \ 'unite' : 1,
+        \ 'text' : 1,
+        \ 'vimwiki' : 1,
+        \ 'gitcommit' : 1,
+        \}
 
     let g:ycm_show_diagnostics_ui =
         \ get( g:, 'ycm_show_diagnostics_ui',
         \ get( g:, 'ycm_register_as_syntastic_checker', 0 ) )
+
+    "let g:ycm_server_keep_logfiles = 1
+    "let g:ycm_server_log_level = 'debug'
 
     ""if exists(expand("../.ycm_extra_conf.py"))
     ""    let g:ycm_auto_trigger = 1
@@ -346,6 +381,68 @@ if isdirectory(expand("~/.vim/bundle/YouCompleteMe/"))
     "nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
     "nmap <F10> :YcmDiags<CR>
 
+endif
+
+""""""""""""""""""""""""""""""
+" nvim-completion-manager
+""""""""""""""""""""""""""""""
+if isdirectory(expand("~/.vim/bundle/nvim-completion-manager/"))
+    " Requirements
+    " pip3 install --user neovim jedi psutil setproctitle
+    " pip install --user neovim jedi psutil setproctitle
+    " .clang_complete file in each project root.
+    " Example of .clang_complete file:
+    "   -DDEBUG
+    "   -include ../config.h
+    "   -I../common
+    "   -I/usr/include/c++/4.5.3/
+    "   -I/usr/include/c++/4.5.3/x86_64-slackware-linux/
+    " Makefile example for auto-generating .clang_complete
+    "   .clang_complete: Makefile
+	"       echo $(CXXFLAGS) > $@
+    "
+    "   make .clang_complete
+    "
+    " Clang Setting
+    " path to directory where library can be found
+    let g:clang_library_path='/usr/lib/llvm-3.8/lib'
+    " or path directly to the library file
+    let g:clang_library_path='/usr/lib/llvm-3.8/lib/libclang-3.8.so'
+
+    " NCM Setting
+    " don't give |ins-completion-menu| messages.  For example,
+    " '-- XXX completion (YYY)', 'match 1 of 2', 'The only match',
+    "set shortmess+=c
+
+    " When the <Enter> key is pressed while the popup menu is visible,
+    " it only hides the menu.
+    " Use this mapping to hide the menu and also start a new line.
+    inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+
+    " When using CTRL-C key to leave insert mode,
+    " it does not trigger the autocmd InsertLeave.
+    " You should use CTRL-[, or map the <c-c> to <ESC>
+    " inoremap <c-c> <ESC>
+
+    " Use <TAB> to select the popup menu:
+    inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+    "let g:cm_sources_override = {
+    "    \ 'cm-tags': {'enable':0}
+    "    \ }
+
+    let g:cm_complete_start_delay = 1
+
+endif
+
+
+""""""""""""""""""""""""""""""
+" deoplete.nvim
+""""""""""""""""""""""""""""""
+if isdirectory(expand("~/.vim/bundle/deoplete.nvim/"))
+    " Use deoplete.
+    let g:deoplete#enable_at_startup = 1
 endif
 
 
@@ -784,26 +881,19 @@ nmap <F5> :cs find c <C-R>=expand("<cword>")<CR><CR>
 nmap <F6> :cs find t <C-R>=expand("<cword>")<CR><CR>
 "nmap <F3> :!ctags -R --c-kinds=+lx --fields=+laS --extra=+q  $PWD /home/yanwzh/workspace/drivers/v1.9/gxbus <CR><CR>:!cscope -Rbkq<CR>
 "nmap <F3><F3> :!ctags -R --c++-kinds=+plx --fields=+iaS --extra=+q . /home/yanwzh/workspace/drivers/v1.9/gxbus <CR><CR>:!cscope -Rbkq<CR>
-nmap <F3> :!ctags -R --c-kinds=+cdefgmnpstulvx --fields=+laSzm --extra=+q  $PWD <CR><CR>:!cscope -Rbkq<CR>
+nmap <F3> :!ctags -R --c-kinds=+cdefgmnpstulvx --fields=+ilaSzm --extra=+q  $PWD <CR><CR>:!cscope -Rbkq<CR>
 nmap <F3><F3> :!ctags -R --c++-kinds=+plx --fields=+iaS --extra=+q $PWD <CR><CR>:!cscope -Rbkq<CR>
 
 "添加tags位置
 "set autochdir "自动切换目录，会导致FuzzyFinder失败 如果打开使用sk代替sl搜索文件 同时ctags生成时需要使用绝对路径
 set tags=tags; "自动查找 这个分号是不能省略
 
-set tags+=../driver/gxbus/tags
-set tags+=../driver/gxcoreapi/tags
-set tags+=../driver/gxavdev/tags
-set tags+=../driver/demod/tags
-set tags+=../driver/gxcas/tags
-set tags+=../driver/thirdparty/tags
-
 set tags+=../platform/gxbus/tags
-set tags+=../platform/gxcoreapi/tags
-set tags+=../platform/gxavdev/tags
-set tags+=../platform/demod/tags
-set tags+=../platform/gxcas/tags
-set tags+=../platform/thirdparty/tags
+"set tags+=../platform/gxcoreapi/tags
+"set tags+=../platform/gxavdev/tags
+"set tags+=../platform/demod/tags
+"set tags+=../platform/gxcas/tags
+"set tags+=../platform/thirdparty/tags
 
 "set tags+=/home/yanwzh/workspace/goxceed/git-driver/v1.9-Beta3-2013-02-26/demod/tags
 "ctags -R /home/boddy/hello/ ctags /usr/include/* /usr/include/bits/*
@@ -928,42 +1018,8 @@ nmap <leader><leader>q :call CodeFormat()<CR>
 "endif
 "
 
-" LINE
-"function! Buf_total_num()
-"    return len(filter(range(1, bufnr('$')), 'buflisted(v:val)'))
-"endfunction
-"function! File_size(f)
-"    let l:size = getfsize(expand(a:f))
-"    if l:size == 0 || l:size == -1 || l:size == -2
-"        return ''
-"    endif
-"    if l:size < 1024
-"        return l:size.' bytes'
-"    elseif l:size < 1024*1024
-"        return printf('%.1f', l:size/1024.0).'k'
-"    elseif l:size < 1024*1024*1024
-"        return printf('%.1f', l:size/1024.0/1024.0) . 'm'
-"    else
-"        return printf('%.1f', l:size/1024.0/1024.0/1024.0) . 'g'
-"    endif
-"endfunction
-"set statusline=%<%1*[B-%n]%*
-"" TOT is an abbreviation for total
-"set statusline+=%2*[TOT:%{Buf_total_num()}]%*
-"set statusline+=%3*\ %{File_size(@%)}\ %*
-"set statusline+=%4*\ %F\ %*
-"set statusline+=%5*『\ %{exists('g:loaded_ale')?ALEGetStatusLine():''}』%{exists('g:loaded_fugitive')?fugitive#statusline():''}%*
-"set statusline+=%6*\ %m%r%y\ %*
-"set statusline+=%=%7*\ %{&ff}\ \|\ %{\"\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"\ \|\"}\ %-14.(%l:%c%V%)%*
-"set statusline+=%8*\ %P\ %*
-"" default bg for statusline is 236 in space-vim-dark
-"hi User1 cterm=bold ctermfg=232 ctermbg=179
-"hi User2 cterm=None ctermfg=214 ctermbg=242
-"hi User3 cterm=None ctermfg=251 ctermbg=240
-"hi User4 cterm=bold ctermfg=169 ctermbg=239
-"hi User5 cterm=None ctermfg=208 ctermbg=238
-"hi User6 cterm=None ctermfg=246 ctermbg=237
-"hi User7 cterm=None ctermfg=250 ctermbg=238
-"hi User8 cterm=None ctermfg=249 ctermbg=240
-
-
+" load the types.vim highlighting file, if it exists
+autocmd BufRead,BufNewFile *.[ch] let fname = "/home/yanwzh/workspace/Solution-for-debug/base/.hightlight"
+autocmd BufRead,BufNewFile *.[ch] if filereadable(fname)
+autocmd BufRead,BufNewFile *.[ch]   exe 'so ' . fname
+autocmd BufRead,BufNewFile *.[ch] endif
